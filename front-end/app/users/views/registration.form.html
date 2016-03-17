@@ -1,0 +1,66 @@
+<md-dialog aria-label="Ostap Login">
+    <md-toolbar class="md-hue-1">
+        <div class="md-toolbar-tools">
+            <h2>Ragistation</h2>
+        </div>
+    </md-toolbar>
+    <form name="registationForm" novalidate ng-submit="vm.register(registationForm)">
+        <md-dialog-content>
+
+            <md-input-container class="md-block">
+                <label>eMail</label>
+                <input ng-model="vm.registationForm.user.email" type="email" name="email"
+                       minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
+                <div ng-messages="registationForm.email.$error" role="alert">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        Your email must be between 10 and 100 characters long.
+                    </div>
+                    <div ng-message-exp="['required']">
+                        Please tell us your email.
+                    </div>
+                    <div ng-message-exp="[ 'pattern']">
+                        Your email must look like an e-mail address.
+                    </div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Password</label>
+                <input ng-model="vm.registationForm.user.password" id="password" type="password" name="password" required
+                       minlength="6" maxlength="20" >
+                <div ng-messages="registationForm.password.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                        Please tell us your password.
+                    </div>
+
+                </div>
+                <div ng-messages="registationForm.password.$error" role="alert">
+                    <div ng-message-exp="[ 'minlength', 'maxlength']">
+                        Your password must be between 6 and 20 characters long.
+                    </div>
+
+                </div>
+
+
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Confirm Password</label>
+                <input type="password" id="password_c" name="password_c" ng-model="vm.registationForm.user.password_c"
+                       required>
+                <div ng-messages="registationForm.password_c.$error" role="alert">
+                    <div ng-message-exp="['required']">
+                        Please confirm your password.
+                    </div>
+                    <!--<div ng-message-exp="[ 'pattern']">-->
+                        <!--Passwords do not match.-->
+                    <!--</div>-->
+                </div>
+            </md-input-container>
+
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="vm.cancel()">Cancel</md-button>
+            <md-button type="submit" class="md-raised md-accent"> Register</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

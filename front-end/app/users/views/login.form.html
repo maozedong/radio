@@ -1,0 +1,25 @@
+<md-dialog aria-label="Ostap Login" >
+    <md-toolbar class="md-hue-1">
+        <div class="md-toolbar-tools">
+            <h2>Login</h2>
+        </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:500px;max-height:600px; ">
+        <form name="accountLogin">
+            <md-input-container class="md-block">
+                <label>eMail</label>
+                <input ng-model="vm.user.email" type="email" name="email"
+                       minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
+                <div ng-messages="accountLogin.email.$error" role="alert">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        Your email must be between 10 and 100 characters long and look like an e-mail address.
+                    </div>
+                </div>
+            </md-input-container>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" >
+        <md-button ng-click="vm.cancel()">Cancel</md-button>
+        <md-button ng-click="vm.login()" class="md-raised md-accent"> Login</md-button>
+    </md-dialog-actions>
+</md-dialog>

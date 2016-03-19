@@ -16,8 +16,8 @@
      */
     function LoginController($mdDialog, $log, LoginService) {
         var vm = this;
-        vm.registationForm = {name: "regForm"};
-        vm.registationForm.user = {
+
+        vm.registationModel = {
             password: 'password',
             email: 'ostapradio@gmail.com',
             password_c: 'password'

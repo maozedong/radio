@@ -3,4 +3,4 @@
  */
 
 angular
-    .module('ostapRadioApp', ['ngMaterial', 'ngRoute', 'layout', 'users']);
+    .module('ostapRadioApp', ['ngMaterial', 'ngMessages' ,'ngRoute', 'layout', 'users']);

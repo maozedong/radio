@@ -3,9 +3,9 @@
  */
 
 angular
-    .module('ostapRadioApp').config(function ($routeProvider,$mdThemingProvider) {
+    .module('ostapRadioApp').config(function ($routeProvider, $mdThemingProvider, $mdIconProvider) {
     $routeProvider
-        .when('/home', {templateUrl: 'layout/views/layout.html', controller: 'LayoutController',controllerAs:"vm"})
+        .when('/home', {templateUrl: 'layout/views/layout.html', controller: 'LayoutController', controllerAs: "vm"})
         .when('/profile', {templateUrl: 'users/views/profile.html'})
         .otherwise({redirectTo: '/home'});
 
@@ -24,6 +24,11 @@ angular
         })
         .backgroundPalette('grey', {
             'default': '200'
-        });
+        })
+
+    $mdIconProvider
+        .defaultIconSet("./content/images/svg/avatars.svg", 128)
+        .icon("menu", "../content/images/svg/menu.svg", 24);
+
 
 });

@@ -5,20 +5,22 @@
         </div>
     </md-toolbar>
     <form name="registationForm" novalidate ng-submit="vm.register(registationForm)">
-        <md-dialog-content>
+        <md-dialog-content  >
+            <md-input-container class="md-block" >
+                <label for="email">eMail</label>
+                <!--<md-icon md-svg-src="../content/images/svg/mail.svg" class="email"></md-icon>-->
 
-            <md-input-container class="md-block">
-                <label>eMail</label>
-                <input ng-model="vm.registationForm.user.email" type="email" name="email"
+                <input id="email" ng-model="vm.registationModel.email" type="email" name="email"
                        minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
-                <div ng-messages="registationForm.email.$error" role="alert">
-                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                        Your email must be between 10 and 100 characters long.
+                <div ng-messages="registationForm.email.$error" role="alert"
+                     ng-show="registationForm.email.$touched && registationForm.email.$invalid ">
+                    <div ng-message-exp="['minlength', 'maxlength']">
+                        Your email must be between 10 and 100 characters long and look like an e-mail address.
                     </div>
-                    <div ng-message-exp="['required']">
+                    <div ng-message="required">
                         Please tell us your email.
                     </div>
-                    <div ng-message-exp="[ 'pattern']">
+                    <div ng-message="pattern">
                         Your email must look like an e-mail address.
                     </div>
                 </div>
@@ -26,39 +28,35 @@
 
             <md-input-container class="md-block">
                 <label>Password</label>
-                <input ng-model="vm.registationForm.user.password" id="password" type="password" name="password" required
-                       minlength="6" maxlength="20" >
-                <div ng-messages="registationForm.password.$error" role="alert">
+                <input ng-model="vm.registationModel.password" id="password" type="password" name="password"
+                       required
+                       minlength="6" maxlength="20">
+                <div ng-messages="registationForm.password.$error" role="alert"
+                     ng-show="registationForm.password.$touched && registationForm.password.$invalid ">
                     <div ng-message-exp="['required']">
                         Please tell us your password.
                     </div>
-
-                </div>
-                <div ng-messages="registationForm.password.$error" role="alert">
                     <div ng-message-exp="[ 'minlength', 'maxlength']">
                         Your password must be between 6 and 20 characters long.
                     </div>
-
                 </div>
-
-
             </md-input-container>
             <md-input-container class="md-block">
                 <label>Confirm Password</label>
-                <input type="password" id="password_c" name="password_c" ng-model="vm.registationForm.user.password_c"
+                <input type="password" id="password_c" name="password_c" ng-model="vm.registationModel.password_c"
+                       compare-to="vm.registationModel.password"
                        required>
-                <div ng-messages="registationForm.password_c.$error" role="alert">
-                    <div ng-message-exp="['required']">
-                        Please confirm your password.
+                <div ng-messages="registationForm.password_c.$error"
+                     ng-show="registationForm.password_c.$touched ||registationForm.password.$touched  && registationForm.password_c.$invalid  ">
+                    <div ng-message="compareTo">
+                        Passwords do not match.
                     </div>
-                    <!--<div ng-message-exp="[ 'pattern']">-->
-                        <!--Passwords do not match.-->
-                    <!--</div>-->
+
                 </div>
             </md-input-container>
+        </md-dialog-content  >
 
-        </md-dialog-content>
-        <md-dialog-actions layout="row">
+        <md-dialog-actions layout="row" md-whiteframe="2">
             <md-button ng-click="vm.cancel()">Cancel</md-button>
             <md-button type="submit" class="md-raised md-accent"> Register</md-button>
         </md-dialog-actions>

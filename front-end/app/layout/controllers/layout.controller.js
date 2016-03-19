@@ -5,20 +5,24 @@
 
     angular
         .module('layout')
-        .controller('LayoutController', ['$log', '$mdDialog', LayoutController
+        .controller('LayoutController', ['$mdDialog', '$mdSidenav', LayoutController
         ]);
 
     /**
      * Main Controller for the  App
-     * @param $log
      * @param $mdDialog
      * @constructor
      */
-    function LayoutController($log, $mdDialog) {
+    function LayoutController($mdDialog, $mdSidenav) {
         var vm = this;
 
         vm.showLogin = showLogin;
         vm.showRegistration = showRegistration;
+        vm.toggleLeftMenu = toggleLeftMenu;
+
+        function toggleLeftMenu() {
+            $mdSidenav('left').toggle();
+        }
 
         function showRegistration() {
             $mdDialog.show({

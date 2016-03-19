@@ -5,7 +5,7 @@
 
     angular
         .module('layout')
-        .controller('LayoutController', ['$mdDialog', '$mdSidenav', LayoutController
+        .controller('LayoutController', ['$mdDialog', '$mdSidenav','$templateCache', LayoutController
         ]);
 
     /**
@@ -13,7 +13,7 @@
      * @param $mdDialog
      * @constructor
      */
-    function LayoutController($mdDialog, $mdSidenav) {
+    function LayoutController($mdDialog, $mdSidenav, $templateCache) {
         var vm = this;
 
         vm.showLogin = showLogin;
@@ -28,7 +28,7 @@
             $mdDialog.show({
                 controller: 'LoginController',
                 controllerAs: "vm",
-                templateUrl: '../app/users/views/registration.form.html',
+                template:  $templateCache.get('users/views/registration.form.html'),
                 parent: angular.element(document.body),
                 clickOutsideToClose: true
             });
@@ -41,7 +41,7 @@
             $mdDialog.show({
                 controller: 'LoginController',
                 controllerAs: "vm",
-                templateUrl: '../app/users/views/login.form.html',
+                template: $templateCache.get('users/views/login.form.html'),
                 parent: angular.element(document.body),
                 clickOutsideToClose: true
             });

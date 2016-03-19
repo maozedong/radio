@@ -5,8 +5,8 @@
 angular
     .module('ostapRadioApp').config(function ($routeProvider, $mdThemingProvider, $mdIconProvider) {
     $routeProvider
-        .when('/home', {templateUrl: 'layout/views/layout.html', controller: 'LayoutController', controllerAs: "vm"})
-        .when('/profile', {templateUrl: 'users/views/profile.html'})
+        .when('/home', {templateUrl: 'app/layout/views/layout.html', controller: 'LayoutController', controllerAs: "vm"})
+        .when('/profile', {templateUrl: 'app/users/views/profile.html'})
         .otherwise({redirectTo: '/home'});
 
     $mdThemingProvider.theme('default')
@@ -27,8 +27,8 @@ angular
         })
 
     $mdIconProvider
-        .defaultIconSet("./content/images/svg/avatars.svg", 128)
-        .icon("menu", "../content/images/svg/menu.svg", 24);
+        .defaultIconSet("content/images/svg/avatars.svg", 128)
+        .icon("menu", "content/images/svg/menu.svg", 24);
 
 
 });

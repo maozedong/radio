@@ -9,14 +9,15 @@ md-toolbar img {
   height: 49px;
   margin-top: 5px;
   margin-left: 10px;
+  margin-right: 10px;
 }
 
 md-dialog {
   min-width: 400px;
 }
 md-dialog form {
-  padding: 15px;
-  margin-top: 10px;
+  padding: 10px;
+  margin-top: 15px;
 }
 
 md-input-container .md-input-messages-animation {

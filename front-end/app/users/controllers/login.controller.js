@@ -5,7 +5,7 @@
 
     angular
         .module('users')
-        .controller('LoginController', ['$mdDialog', '$log', 'LoginService', LoginController
+        .controller('LoginController', ['$mdDialog', '$log', 'LoginService', '$location', LoginController
         ]);
 
     /**
@@ -14,7 +14,7 @@
      * @param $log
      * @constructor
      */
-    function LoginController($mdDialog, $log, LoginService) {
+    function LoginController($mdDialog, $log, LoginService, $location) {
         var vm = this;
 
         vm.registationModel = {
@@ -22,27 +22,31 @@
             email: 'ostapradio@gmail.com',
             password_c: 'password'
         };
+        vm.loginModel = vm.registationModel;
 
         vm.cancel = function () {
             $mdDialog.hide();
         };
 
-        vm.login = function () {
+        vm.login = function (form) {
             $log.debug("login()...");
-            LoginService.login().then(function () {
-                $log.debug("successnovalidate ...");
 
-            }, function () {
-                $log.debug("fail...");
+            if (form.$valid) {
+                LoginService.login(form).then(function (user) {
+                    $log.debug("success   login ..." + user.email + "" + user.key);
+                    $location.path('/profile');
+                    $mdDialog.hide();
+                }, function () {
+                    $log.debug("fail...");
+                })
+            }
 
-            })
-            $mdDialog.hide();
         };
 
         vm.register = function (form) {
             $log.debug("register()...");
             if (form.$valid) {
-                LoginService.login().then(function (user) {
+                LoginService.login(form).then(function (user) {
                     $log.debug("success   register ..." + user.email + "" + user.key);
                     $mdDialog.hide();
                 }, function () {

@@ -6,9 +6,9 @@
     </md-toolbar>
     <form name="registationForm" novalidate ng-submit="vm.register(registationForm)">
         <md-dialog-content  >
-            <md-input-container class="md-block" >
+            <md-dialog-content-body>
+            <md-input-container class="md-block dialogfirst-child" >
                 <label for="email">eMail</label>
-                <!--<md-icon md-svg-src="../content/images/svg/mail.svg" class="email"></md-icon>-->
 
                 <input id="email" ng-model="vm.registationModel.email" type="email" name="email"
                        minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
@@ -25,7 +25,6 @@
                     </div>
                 </div>
             </md-input-container>
-
             <md-input-container class="md-block">
                 <label>Password</label>
                 <input ng-model="vm.registationModel.password" id="password" type="password" name="password"
@@ -54,6 +53,7 @@
 
                 </div>
             </md-input-container>
+            </md-dialog-content-body>
         </md-dialog-content  >
 
         <md-dialog-actions layout="row" md-whiteframe="2">

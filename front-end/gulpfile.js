@@ -8,16 +8,14 @@ var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
 var templateCache = require('gulp-angular-templatecache');
 var browserSync = require('browser-sync').create();
-var useref = require('gulp-useref');
-var gulpIf = require('gulp-if');
-
-gulp.task('useref', function(){
-    return gulp.src('index.html')
-        .pipe(useref())
-        // Minifies only if it's a JavaScript file
-        .pipe(gulpIf('*.js', uglify()))
-        .pipe(gulp.dest('dist'))
-});
+//
+//gulp.task('useref', function(){
+//    return gulp.src('index.html')
+//        .pipe(useref())
+//        // Minifies only if it's a JavaScript file
+//        .pipe(gulpIf('*.js', uglify()))
+//        .pipe(gulp.dest('dist'))
+//});
 
 gulp.task('browserSync', function() {
     browserSync.init({
@@ -56,5 +54,7 @@ gulp.task('watch', ['browserSync','html','js'], function () {
 
     gulp.watch('app/*.html', browserSync.reload);
     gulp.watch('app/content/**/*.css', browserSync.reload);
-})
+});
+
+gulp.task('default', ['html','js']);
 

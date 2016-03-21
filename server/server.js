@@ -8,6 +8,8 @@ var User = require('./models/user');
 var jwt = require('jsonwebtoken');
 mongoose.connect('mongodb://localhost:27017/radio');
 
+app.set('superSecret', 'secretKey');
+
 //static content
 app.use('/', express.static('../front-end'));
 app.use('/node_modules', express.static('../node_modules'));
@@ -57,7 +59,7 @@ api.post('/authenticate', function(req, res){
 });
 
 api.route('/user')
-    .get(function(req, res){
+    .get(authenticate,function(req, res){
         User.find()
             .then(function(users){
                 res.json({users: users});
@@ -67,7 +69,7 @@ api.route('/user')
                 res.json(err);
             });
     })
-    .post(function(req, res){
+    .post(authenticate,function(req, res){
         if(!req.body.email || !req.body.password){
             res.status(400);
         }
@@ -89,7 +91,7 @@ api.route('/user')
     });
 
 api.route('/user/:id')
-    .get(function(req, res){
+    .get(authenticate,function(req, res){
         User.where({_id: req.params.id}).findOne(function(err, user){
             if(!user){
                 res.status(404);
@@ -99,7 +101,7 @@ api.route('/user/:id')
             res.json(user);
         });
     })
-    .delete(function(req, res){
+    .delete(authenticate,function(req, res){
         User.where({_id: req.params.id}).remove().then(function(user){
             if(!user) {
                 res.status(404)
@@ -107,7 +109,7 @@ api.route('/user/:id')
             res.send();
         })
     })
-    .put(function(req, res){
+    .put(authenticate,function(req, res){
         User.where({_id: req.params.id}).findOneAndUpdate({password: req.body.password})
             .then(function(user){
                 if(!user) {
@@ -123,6 +125,27 @@ app.use(express.static('../public'));
 app.listen(port);
 console.log('api is running at localhost:' + port);
 
-function authenticate(req, res){
+function authenticate(req, res, next){
+    var token = req.headers['x-access-token'];
+    // decode token
+    if (token) {
 
+        // verifies secret and checks exp
+        jwt.verify(token, 'secretKey', function(err, decoded) {
+            if (err) {
+                return res.status(403).send();
+            } else {
+                // if everything is good, save to request for use in other routes
+                req.decoded = decoded;
+                next();
+            }
+        });
+
+    } else {
+
+        // if there is no token
+        // return an error
+        return res.status(403).send();
+
+    }
 }

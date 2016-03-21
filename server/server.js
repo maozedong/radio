@@ -122,3 +122,7 @@ app.use(express.static('../public'));
 
 app.listen(port);
 console.log('api is running at localhost:' + port);
+
+function authenticate(req, res){
+
+}

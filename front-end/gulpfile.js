@@ -47,13 +47,19 @@ gulp.task('js', function () {
 })
 
 
-gulp.task('watch', ['browserSync','html','js'], function () {
+//gulp.task('watch', ['browserSync','html','js'], function () {
+//    gulp.watch('app/**/*.html', ['html'])   ;
+//    gulp.watch('app/**/*.js', ['js'])
+//    gulp.watch('app/*.html', browserSync.reload);
+//
+//    gulp.watch('app/content/**/*.css', browserSync.reload);
+//});
+
+gulp.task('watch', ['html','js'], function () {
     gulp.watch('app/**/*.html', ['html'])   ;
     gulp.watch('app/**/*.js', ['js'])
-    gulp.watch('app/*.html', browserSync.reload);
 
-    gulp.watch('app/content/**/*.css', browserSync.reload);
+
 });
-
 gulp.task('default', ['html','js']);
 

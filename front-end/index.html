@@ -31,7 +31,7 @@
                 md-is-locked-open="$mdMedia('gt-sm')">
 
         <md-toolbar class="md-whiteframe-z1">
-            <h3>Users</h3>
+            <h3 flex-offset="10">GENRS</h3>
         </md-toolbar>
 
         <md-list>
@@ -45,15 +45,28 @@
 
     </md-sidenav>
     <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
-        <md-toolbar layout="row"  layout-align="center center" layout-wrap=""  ng-controller="LayoutController as vm">
-            <md-button id="main" class="menu" hide-gt-sm ng-click="vm.toggleLeftMenu()" aria-label="Show User List">
+        <md-toolbar layout-gt-xs="row" layout-align="start center" layout-wrap=""
+                    ng-controller="LayoutController as vm">
+            <md-button flex-sm="20" flex-xs="30" id="main"   class="menu" hide-gt-sm
+                       ng-click="vm.toggleLeftMenu()" aria-label="Show User List">
                 <md-icon md-svg-icon="menu"></md-icon>
             </md-button>
-            <section layout="row" >
-                <h3>Ostap Radio</h3></section>
-            <section layout="row" layout-sm="column" layout-align="end center" layout-wrap="">
-                <md-button ng-click="vm.showLogin()">Login</md-button>
-                <md-button ng-click="vm.showRegistration()">Register</md-button>
+            <h3 flex="40" flex-offset-gt-sm="10"  flex-sm="65" flex-xs="70">Favorite Videos</h3>
+
+
+            <md-menu  md-offset="0 30" flex-sm="5" flex-xs="30" hide show-sm show-xs>
+                <md-button ng-click="$mdOpenMenu($event)"  class="md-icon-button" aria-label="More">
+                    <md-icon md-menu-origin md-svg-icon="login-more"></md-icon>
+                </md-button>
+
+                <md-menu-content hide-gt-sm>
+                    <md-menu-item><md-button ng-click="vm.showLogin()">LOGIN</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="vm.showRegistration()">SIGN UP</md-button></md-menu-item>
+                </md-menu-content>
+            </md-menu>
+            <section flex="33" hide-sm hide-xs layout="row" layout-align="end center" flex layout-wrap="">
+                <md-button ng-click="vm.showLogin()">LOGIN</md-button>
+                <md-button ng-click="vm.showRegistration()">SIGN UP</md-button>
             </section>
         </md-toolbar>
         <div flex ng-view layout="column"></div>

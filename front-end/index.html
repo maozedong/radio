@@ -25,7 +25,7 @@
 
 
 <div flex layout="row" tabIndex="-1" role="main">
-    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+    <md-sidenav  hide show-sm show-xs class="site-sidenav md-sidenav-left md-whiteframe-z2"
                 md-component-id="left"
                 aria-label="Show User List"
                 md-is-locked-open="$mdMedia('gt-sm')">
@@ -37,7 +37,7 @@
         <md-list>
             <md-list-item>
                 <md-button>
-                    <md-icon md-svg-icon="content/images/svg/avatar-1.svg" class="avatar"></md-icon>
+
                     Avarat for good Ostap
                 </md-button>
             </md-list-item>
@@ -47,21 +47,24 @@
     <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
         <md-toolbar layout-gt-xs="row" layout-align="start center" layout-wrap=""
                     ng-controller="LayoutController as vm">
-            <md-button flex-sm="20" flex-xs="30" id="main"   class="menu" hide-gt-sm
+            <md-button flex-sm="20" flex-xs="30" id="main" class="menu" hide-gt-sm
                        ng-click="vm.toggleLeftMenu()" aria-label="Show User List">
-                <md-icon md-svg-icon="menu"></md-icon>
+                <md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
+
             </md-button>
-            <h3 flex="40" flex-offset-gt-sm="10"  flex-sm="65" flex-xs="70">Favorite Videos</h3>
-
-
-            <md-menu  md-offset="0 30" flex-sm="5" flex-xs="30" hide show-sm show-xs>
-                <md-button ng-click="$mdOpenMenu($event)"  class="md-icon-button" aria-label="More">
-                    <md-icon md-menu-origin md-svg-icon="login-more"></md-icon>
+            <h3 flex="40" flex-offset-gt-sm="10" flex-sm="65" flex-xs="70">Favorite Videos</h3>
+            <md-menu md-offset="0 30" flex-sm="5" flex-xs="30" hide show-sm show-xs>
+                <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="More">
+                    <md-icon md-menu-origin md-svg-icon="navigation:ic_more_vert_24px"></md-icon>
                 </md-button>
 
                 <md-menu-content hide-gt-sm>
-                    <md-menu-item><md-button ng-click="vm.showLogin()">LOGIN</md-button></md-menu-item>
-                    <md-menu-item><md-button ng-click="vm.showRegistration()">SIGN UP</md-button></md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="vm.showLogin()">LOGIN</md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="vm.showRegistration()">SIGN UP</md-button>
+                    </md-menu-item>
                 </md-menu-content>
             </md-menu>
             <section flex="33" hide-sm hide-xs layout="row" layout-align="end center" flex layout-wrap="">

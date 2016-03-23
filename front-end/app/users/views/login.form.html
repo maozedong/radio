@@ -1,13 +1,16 @@
-<md-dialog aria-label="Ostap Login">
+<md-dialog aria-label="Ostap Login" flex-sm="40" flex-xs="50" flex-gt-sm="25">
     <md-toolbar class="md-hue-1">
-        <div class="md-toolbar-tools">
-            <h2>Login</h2>
+        <div class="md-toolbar-tools  ">
+            <md-icon md-svg-icon="social:ic_person_24px"></md-icon>
+            <h2 class=" md-padding ">LOGIN</h2>
+            <span flex></span>
         </div>
     </md-toolbar>
-    <form name="loginForm" ng-submit="vm.login(loginForm)">
+    <form name="loginForm" class="md-padding " ng-submit="vm.login(loginForm)">
         <md-dialog-content>
             <md-dialog-content-body>
                 <md-input-container class="md-block ">
+                    <md-icon md-svg-icon="communication:ic_email_24px"></md-icon>
                     <label for="email">eMail</label>
                     <input id="email" ng-model="vm.loginModel.email" type="email" name="email"
                            minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
@@ -25,6 +28,7 @@
                     </div>
                 </md-input-container>
                 <md-input-container class="md-block">
+                    <md-icon md-svg-icon="action:ic_lock_24px"></md-icon>
                     <label>Password</label>
                     <input ng-model="vm.loginModel.password" id="password" type="password" name="password"
                            required
@@ -39,13 +43,11 @@
                         </div>
                     </div>
                 </md-input-container>
-                <md-dialog-actions layout="row" md-whiteframe="2">
-                    <md-button ng-click="vm.cancel()">Cancel</md-button>
-                    <md-button type="submit" class="md-raised md-accent"> Login</md-button>
-                </md-dialog-actions>
             </md-dialog-content-body>
         </md-dialog-content>
-
+        <md-dialog-actions layout="row" md-whiteframe="2">
+            <md-button ng-click="vm.cancel()">Cancel</md-button>
+            <md-button type="submit" class="md-raised md-accent"> Login</md-button>
+        </md-dialog-actions>
     </form>
-
 </md-dialog>

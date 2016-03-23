@@ -1,29 +1,6 @@
-md-no-animations,
-md-dialog.md-transition-in,
-md-dialog.md-transition-out {
-  -webkit-transform: none !important;
-  transform: none !important;
-}
-
-md-toolbar img {
-  height: 49px;
-  margin-top: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-md-dialog {
-  min-width: 400px;
-}
-md-dialog form {
-  padding: 10px;
-  margin-top: 15px;
-}
-
-md-input-container .md-input-messages-animation {
-  max-width: 300px;
-}
-
-md-input-container.md-input-invalid md-icon.name, md-input-container.md-input-invalid md-icon.email, md-input-container.md-input-invalid md-icon.phone {
-  color: red;
-}
+/*md-no-animations,*/
+/*md-dialog.md-transition-in,*/
+/*md-dialog.md-transition-out {*/
+  /*-webkit-transform: none !important;*/
+  /*transform: none !important;*/
+/*}*/

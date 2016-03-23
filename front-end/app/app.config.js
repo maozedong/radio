@@ -4,6 +4,10 @@
 
 angular
     .module('ostapRadioApp')
+    .constant('constants', {
+        baseUrl: '/',
+        apiUrl: '/api'
+    })
     .config(function ($routeProvider, $mdThemingProvider, $mdIconProvider) {
         $routeProvider
             .when('/home', {

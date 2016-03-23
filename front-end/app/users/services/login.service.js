@@ -5,7 +5,7 @@
     'use strict';
 
     angular.module('users')
-        .factory('LoginService', ['$q', LoginService]);
+        .factory('LoginService', ['$http', '$log', 'constants', LoginService]);
 
     /**
      * Login DataService
@@ -15,18 +15,20 @@
      * @returns {{login: Function}}
      * @constructor
      */
-    function LoginService($q) {
-        var user = {key: "1", email: "gal@gmail.com", name: "Galyna Vistovska"};
+    function LoginService($http, $log, constants) {
+        var apiUrl = constants.apiUrl;
+        var url = {
+            login: apiUrl + '/authenticate'
+        };
 
-        // Promise-based API
         return {
-            login: function () {
-                // Simulate async nature of real remote calls
-                return $q.when(user);
-            },
-            register: function () {
-                // Simulate async nature of real remote calls
-                return $q.when(user);
+            login: function (creds) {
+                return $http.post(url.login, creds).then(function(res){
+                    $http.defaults.headers.common['x-auth-token'] = res.data.token;
+                    return res.data.user;
+                }).catch(function(err){
+                    $log.error(err);
+                });
             }
         };
     }

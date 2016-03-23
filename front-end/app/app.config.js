@@ -34,6 +34,7 @@ angular
 
         $mdIconProvider
             .iconSet("action", "../node_modules//material-design-icons/sprites/svg-sprite/svg-sprite-action.svg")
+            .iconSet("social", "../node_modules//material-design-icons/sprites/svg-sprite/svg-sprite-social.svg")
             .iconSet("communication", "../node_modules//material-design-icons/sprites/svg-sprite/svg-sprite-communication.svg")
             .iconSet("navigation", "../node_modules/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg")
 
@@ -42,6 +43,7 @@ angular
     var urls = [
         '../node_modules/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg',
         "../node_modules//material-design-icons/sprites/svg-sprite/svg-sprite-action.svg",
+        "../node_modules//material-design-icons/sprites/svg-sprite/svg-sprite-social.svg",
         "../node_modules//material-design-icons/sprites/svg-sprite/svg-sprite-communication.svg"
     ];
     // Pre-fetch icons sources by URL and cache in the $templateCache...

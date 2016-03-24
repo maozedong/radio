@@ -5,7 +5,7 @@
 
     angular
         .module('users')
-        .controller('LoginController', ['$mdDialog', '$log', 'LoginService', '$location', LoginController
+        .controller('LoginController', ['$mdDialog', '$log', 'LoginService','userService', '$location', LoginController
         ]);
 
     /**
@@ -14,15 +14,18 @@
      * @param $log
      * @constructor
      */
-    function LoginController($mdDialog, $log, LoginService, $location) {
+    function LoginController($mdDialog, $log, LoginService, userService, $location) {
         var vm = this;
 
         vm.registationModel = {
-            password: 'password',
-            email: 'ostapradio@gmail.com',
-            password_c: 'password'
+            password: 'admin',
+            email: 'admin@admin.com',
+            password_c: 'admin'
         };
-        vm.loginModel = vm.registationModel;
+        vm.loginModel = {
+            password: 'admin',
+            email: 'admin@admin.com'
+        };
 
         vm.cancel = function () {
             $mdDialog.hide();
@@ -32,8 +35,8 @@
             $log.debug("login()...");
 
             if (form.$valid) {
-                LoginService.login(form).then(function (user) {
-                    $log.debug("success   login ..." + user.email + "" + user.key);
+                LoginService.login(vm.loginModel).then(function (user) {
+                    $log.debug("success   login ..." + user.email + "" + user.id);
                     $location.path('/profile');
                     $mdDialog.hide();
                 }, function () {
@@ -46,8 +49,8 @@
         vm.register = function (form) {
             $log.debug("register()...");
             if (form.$valid) {
-                LoginService.login(form).then(function (user) {
-                    $log.debug("success   register ..." + user.email + "" + user.key);
+                userService.post(vm.registationModel).then(function (user) {
+                    $log.debug("success   register ..." + user.email + "" + user._id);
                     $mdDialog.hide();
                 }, function () {
                     $log.debug("fail...");

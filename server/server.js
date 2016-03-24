@@ -50,7 +50,11 @@ api.post('/authenticate', function(req, res){
                 expiresIn: 1440*60 //1 day
             });
             res.json({
-                token: token
+                token: token,
+                user: {
+                    email: user.email,
+                    id: user._id
+                }
             })
         }).catch(function(err){
             res.status(403);
@@ -69,7 +73,7 @@ api.route('/user')
                 res.json(err);
             });
     })
-    .post(authenticate,function(req, res){
+    .post(function(req, res){
         if(!req.body.email || !req.body.password){
             res.status(400);
         }
@@ -80,7 +84,10 @@ api.route('/user')
                     password: req.body.password
                 });
                 user.save().then(function(){
-                    res.send();
+                    res.json({
+                        email: user.email,
+                        id: user._id
+                    });
                 });
             }else{
                 console.log('user exists: ', req.body.email);

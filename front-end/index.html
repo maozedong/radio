@@ -25,32 +25,32 @@
 
 
 <div flex layout="row" tabIndex="-1" role="main">
-    <md-sidenav  class="site-sidenav md-sidenav-left md-whiteframe-z2"
-                md-component-id="left"
-                aria-label="GANRES"
-               >
+    <!--<md-sidenav  class="site-sidenav md-sidenav-left md-whiteframe-z2"-->
+                <!--md-component-id="left"-->
+                <!--aria-label="GANRES"-->
+               <!--&gt;-->
 
-        <md-toolbar class="md-whiteframe-z1">
-            <div class="md-toolbar-tools">
-            <h3 class="md-padding">Ganres</h3>
-            </div>
-        </md-toolbar>
-        <md-list>
-            <md-list-item>
-                <md-button>
+        <!--<md-toolbar class="md-whiteframe-z1">-->
+            <!--<div class="md-toolbar-tools">-->
+            <!--<h3 class="md-padding">Ganres</h3>-->
+            <!--</div>-->
+        <!--</md-toolbar>-->
+        <!--<md-list>-->
+            <!--<md-list-item>-->
+                <!--<md-button>-->
 
-                    Avarat for good Ostap
-                </md-button>
-            </md-list-item>
-        </md-list>
+                    <!--Avarat for good Ostap-->
+                <!--</md-button>-->
+            <!--</md-list-item>-->
+        <!--</md-list>-->
 
-    </md-sidenav>
+    <!--</md-sidenav>-->
     <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z1">
         <md-toolbar ng-controller="LayoutController as vm">
             <div class="md-toolbar-tools">
-                <md-button   hide-gt-sm ng-click="vm.toggleLeftMenu()" class="md-icon-button" aria-label="Show Ganres">
-                    <md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
-                </md-button>
+                <!--<md-button   hide-gt-sm ng-click="vm.toggleLeftMenu()" class="md-icon-button" aria-label="Show Ganres">-->
+                    <!--<md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>-->
+                <!--</md-button>-->
                 <h1 class=" md-padding ">
                     <span>Favorite</span>
                 </h1>
@@ -72,7 +72,7 @@
                 <md-button hide-sm hide-xs ng-click="vm.showRegistration()">SIGN UP</md-button>
             </div>
         </md-toolbar>
-        <br>
+
         <div layout-fill  ng-view layout="column"></div>
     </div>
 </div>

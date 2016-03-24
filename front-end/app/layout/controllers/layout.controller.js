@@ -70,7 +70,8 @@
                 title: " Avril Lavigne",
 
             }];
-
+        vm.artists1 = vm.artists.slice().sort();
+        vm.artists2 = vm.artists.slice().reverse() ;
 
         function toggleLeftMenu() {
             $mdSidenav('left').toggle();

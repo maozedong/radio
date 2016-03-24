@@ -1,5 +1,25 @@
-<md-content  flex id="home">
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex="12">
+    </div>
+    <div flex="75">
+        <md-grid-list
+                md-cols-xs="1" md-cols-gt-xs="2" md-cols-md="3" md-cols-gt-md="3" md-cols-lg="3"
+                md-row-height-xs="330" md-row-height-sm="360" md-row-height-="350" md-row-height-gt-md="480"
+                md-gutter="12px" md-gutter-gt-sm="8px" >
+            <md-grid-tile ng-repeat="tile in vm.artists" >
 
-    <h2 flex-offset="10" >My home</h2>
+                <md-card class="artists"  >
+                    <img ng-src="{{tile.icon}}" class="md-card-image "  alt="{{tile.title}}">
+                    <md-card-footer>
+                        <h3>{{tile.title}}</h3>
+                    </md-card-footer>
+                </md-card>
+            </md-grid-tile>
+    </div>
 
+    <div flex="12">
+
+    </div>
+
+    </div>
 </md-content>

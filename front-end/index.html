@@ -25,15 +25,16 @@
 
 
 <div flex layout="row" tabIndex="-1" role="main">
-    <md-sidenav  hide show-sm show-xs class="site-sidenav md-sidenav-left md-whiteframe-z2"
+    <md-sidenav  class="site-sidenav md-sidenav-left md-whiteframe-z2"
                 md-component-id="left"
-                aria-label="Show User List"
-                md-is-locked-open="$mdMedia('gt-sm')">
+                aria-label="GANRES"
+               >
 
         <md-toolbar class="md-whiteframe-z1">
-            <h3 flex-offset="10">GENRS</h3>
+            <div class="md-toolbar-tools">
+            <h3 class="md-padding">Ganres</h3>
+            </div>
         </md-toolbar>
-
         <md-list>
             <md-list-item>
                 <md-button>
@@ -44,35 +45,35 @@
         </md-list>
 
     </md-sidenav>
-    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
-        <md-toolbar layout-gt-xs="row" layout-align="start center" layout-wrap=""
-                    ng-controller="LayoutController as vm">
-            <md-button flex-sm="20" flex-xs="30" id="main" class="menu" hide-gt-sm
-                       ng-click="vm.toggleLeftMenu()" aria-label="Show User List">
-                <md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
-
-            </md-button>
-            <h3 flex="40" flex-offset-gt-sm="10" flex-sm="65" flex-xs="70">Favorite Videos</h3>
-            <md-menu md-offset="0 30" flex-sm="5" flex-xs="30" hide show-sm show-xs>
-                <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="More">
-                    <md-icon md-menu-origin md-svg-icon="navigation:ic_more_vert_24px"></md-icon>
+    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z1">
+        <md-toolbar ng-controller="LayoutController as vm">
+            <div class="md-toolbar-tools">
+                <md-button   hide-gt-sm ng-click="vm.toggleLeftMenu()" class="md-icon-button" aria-label="Show Ganres">
+                    <md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
                 </md-button>
-
-                <md-menu-content hide-gt-sm>
-                    <md-menu-item>
-                        <md-button ng-click="vm.showLogin()">LOGIN</md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                        <md-button ng-click="vm.showRegistration()">SIGN UP</md-button>
-                    </md-menu-item>
-                </md-menu-content>
-            </md-menu>
-            <section flex="33" hide-sm hide-xs layout="row" layout-align="end center" flex layout-wrap="">
-                <md-button ng-click="vm.showLogin()">LOGIN</md-button>
-                <md-button ng-click="vm.showRegistration()">SIGN UP</md-button>
-            </section>
+                <h1 class=" md-padding ">
+                    <span>Favorite</span>
+                </h1>
+                <span flex></span>
+                <md-menu hide show-sm show-xs>
+                    <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="More">
+                        <md-icon md-menu-origin md-svg-icon="navigation:ic_more_vert_24px"></md-icon>
+                    </md-button>
+                    <md-menu-content hide-gt-sm="true">
+                        <md-menu-item>
+                            <md-button ng-click="vm.showLogin()">LOGIN</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="vm.showRegistration()">SIGN UP</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+                <md-button hide-sm hide-xs ng-click="vm.showLogin()">LOGIN</md-button>
+                <md-button hide-sm hide-xs ng-click="vm.showRegistration()">SIGN UP</md-button>
+            </div>
         </md-toolbar>
-        <div flex ng-view layout="column"></div>
+        <br>
+        <div layout-fill  ng-view layout="column"></div>
     </div>
 </div>
 

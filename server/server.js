@@ -1,18 +1,22 @@
 var express = require('express');
 var app = express();
+var config = require('./config');
 var api = express.Router();
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 8080;
 var mongoose = require('mongoose');
-var User = require('./models/user');
+
 var jwt = require('jsonwebtoken');
-mongoose.connect('mongodb://localhost:27017/radio');
+var restEndpoint = require('./routes/restEndpoint');
+//models
+var User = require('./models/user');
+var Artist = require('./models/artist');
+var Album = require('./models/album');
+var Composition = require('./models/composition');
 
-app.set('superSecret', 'secretKey');
+var authenticate = require('./routes/authenticate');
 
-//static content
-app.use('/', express.static('../front-end'));
-app.use('/node_modules', express.static('../node_modules'));
+mongoose.connect(config.mongoUrl);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -125,34 +129,16 @@ api.route('/user/:id')
                 res.send();
             });
     });
+
+api.use('/artist', restEndpoint(Artist));
+api.use('/album', restEndpoint(Album));
+api.use('/composition', restEndpoint(Composition));
+
 app.use('/api', api);
 
-app.use(express.static('../public'));
+//static content
+app.use('/', express.static('../front-end'));
+app.use('/node_modules', express.static('../node_modules'));
 
 app.listen(port);
 console.log('api is running at localhost:' + port);
-
-function authenticate(req, res, next){
-    var token = req.headers['x-access-token'];
-    // decode token
-    if (token) {
-
-        // verifies secret and checks exp
-        jwt.verify(token, 'secretKey', function(err, decoded) {
-            if (err) {
-                return res.status(403).send();
-            } else {
-                // if everything is good, save to request for use in other routes
-                req.decoded = decoded;
-                next();
-            }
-        });
-
-    } else {
-
-        // if there is no token
-        // return an error
-        return res.status(403).send();
-
-    }
-}

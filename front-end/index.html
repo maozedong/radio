@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>ostap radio</title>
+    <title>Retree</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +9,8 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="content/css/app.css"/>
+    <link rel="shortcut icon" href="http://localhost:8080/favicon.ico" >
+
 
     <style type="text/css">
         /**
@@ -51,8 +53,10 @@
                 <!--<md-button   hide-gt-sm ng-click="vm.toggleLeftMenu()" class="md-icon-button" aria-label="Show Ganres">-->
                     <!--<md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>-->
                 <!--</md-button>-->
+                <!--<img ng-src="content/images/branch.svg" style="width:50px;height: 50px;background-color: white; border-radius: 50%"></img>-->
+               <img ng-src="content/images/tree.svg" style="width:50px;height: 50px;background-color: white; border-radius: 50%"></img>
                 <h1 class=" md-padding ">
-                    <span>Favorite</span>
+                    <span>ROOM</span>
                 </h1>
                 <span flex></span>
                 <md-menu hide show-sm show-xs>
@@ -74,6 +78,7 @@
         </md-toolbar>
 
         <div layout-fill  ng-view layout="column"></div>
+        <md-icon md-svg-icon="content/images/tree.svg"></md-icon>
     </div>
 </div>
 

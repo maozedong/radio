@@ -1,7 +1,10 @@
 var mongoose = require('mongoose');
 var Shema = mongoose.Schema;
 var UserShema = new Shema({
-    email: String,
+    email: {
+        type: String,
+        unique: true
+    },
     password: String
 });
 
